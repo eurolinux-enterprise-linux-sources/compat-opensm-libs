@@ -1,6 +1,6 @@
 Name: compat-opensm-libs
 Version: 3.3.15
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Back compatability libraries for the IB management stack
 Group: System Environment/Libraries
 License: GPLv2 or BSD
@@ -41,7 +41,6 @@ rm -rf %{buildroot}/etc %{buildroot}/usr/include %{buildroot}/usr/sbin
 rm -rf %{buildroot}/usr/share
 rm -f %{buildroot}%{_libdir}/*.{la,so,a}
 rm -f %{buildroot}%{_libdir}/libopensm*
-rm -f %{buildroot}%{_libdir}/libosmcomp*
 
 %clean
 rm -rf %{buildroot}
@@ -54,6 +53,11 @@ rm -rf %{buildroot}
 %{_libdir}/lib*
 
 %changelog
+* Tue Feb 19 2019 Honggang Li <honli@redhat.com> - 3.3.15-3
+- Package up libosmcomp.so.3* to fix dependency issue after rebase
+  opensm to release 3.3.21
+- Resolves: bz1670692
+
 * Mon Nov 10 2014 Doug Ledford <dledford@redhat.com> - 3.3.15-2
 - Fix build flags to satisfy rpmdiff
 - Related: bz1155762
